@@ -1,6 +1,62 @@
-<h1>All Beers</h1>
-<ul>
+<h1 class="title">🍺 Explore Our Beers 🍺</h1>
+
+<div class="beer-container">
   <% @beers.each do |beer| %>
-    <li><%= link_to beer.name, beer_path(beer) %> - <%= beer.style %> (<%= beer.abv %>% ABV)</li>
+    <div class="beer-card">
+      <img src="https://img.freepik.com/premium-vector/beer-mug-cold-beer-glass-silhouette-vector-illustration_1058532-15325.jpg"
+           alt="<%= beer.name %> Image">
+      <div class="beer-info">
+        <h2><%= beer.name %></h2>
+        <p><strong>Style:</strong> <%= beer.style %></p>
+        <p><strong>ABV:</strong> <%= beer.abv %>%</p>
+        <p><strong>Brewery:</strong> <%= link_to beer.brewery.name, brewery_path(beer.brewery) if beer.brewery %></p>
+        <%= link_to "View Details", beer_path(beer), class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+<!-- Styling -->
+<style>
+  .beer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .beer-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+  }
+
+  .beer-card img {
+    width: 175px;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .beer-info h2 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .btn:hover {
+    background: #0056b3;
+  }
+</style>

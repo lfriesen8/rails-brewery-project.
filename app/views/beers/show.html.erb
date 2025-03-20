@@ -5,5 +5,6 @@
 <p>Size: <%= @beer.ounces %> oz</p>
 
 <p>Brewed by: <%= link_to @beer.brewery.name, brewery_path(@beer.brewery) %></p>
+<p> Enjoy responsibly, dont do anything i wouldnt do </p>
 
 <%= link_to "Back to Beers", beers_path %>

@@ -1,0 +1,60 @@
+<h1 class="title">🍺 Explore the Best Watering Holes 🍺</h1>
+
+<div class="brewery-container">
+  <% @breweries.each do |brewery| %>
+    <div class="brewery-card">
+      <img src="https://img.freepik.com/premium-vector/pub-illustration-bar-counter-with-beer-taps-vector_760676-1073.jpg"
+           alt="<%= brewery.name %> Image">
+      <div class="brewery-info">
+        <h2><%= brewery.name %></h2>
+        <p><strong>Location:</strong> <%= brewery.city %>, <%= brewery.state %></p>
+        <%= link_to "View Details", brewery_path(brewery), class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Styling -->
+<style>
+  .brewery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .brewery-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+  }
+
+  .brewery-card img {
+    width: 175px;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .brewery-info h2 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .btn:hover {
+    background: #0056b3;
+  }
+</style>
