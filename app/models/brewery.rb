@@ -1,2 +1,4 @@
 class Brewery < ApplicationRecord
-end
+    has_many :beers
+  end
+  
