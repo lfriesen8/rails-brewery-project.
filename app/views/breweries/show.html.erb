@@ -1,0 +1,11 @@
+<h1><%= @brewery.name %></h1>
+<p>Location: <%= @brewery.city %>, <%= @brewery.state %></p>
+
+<h2>Beers:</h2>
+<ul>
+  <% @beers.each do |beer| %>
+    <li><%= link_to beer.name, beer_path(beer) %> - <%= beer.style %> (<%= beer.abv %>% ABV)</li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Breweries", breweries_path %>
