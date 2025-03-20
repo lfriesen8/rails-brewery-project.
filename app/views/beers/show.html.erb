@@ -1,10 +1,23 @@
+
 <h1><%= @beer.name %></h1>
-<p>Style: <%= @beer.style %></p>
-<p>ABV: <%= @beer.abv %>%</p>
-<p>IBU: <%= @beer.ibu %></p>
-<p>Size: <%= @beer.ounces %> oz</p>
+<p>Details: </p> 
+<p><strong>Style:</strong> <%= @beer.style %></p>
+<p><strong>ABV:</strong> <%= @beer.abv %>%</p>
+<p><strong>IBU:</strong> <%= @beer.ibu %></p>
+<p><strong>Size:</strong> <%= @beer.ounces %> oz</p>
 
-<p>Brewed by: <%= link_to @beer.brewery.name, brewery_path(@beer.brewery) %></p>
-<p> Enjoy responsibly, dont do anything i wouldnt do </p>
+<p><strong>Brewed by:</strong> <%= link_to @beer.brewery.name, brewery_path(@beer.brewery) %></p>
 
-<%= link_to "Back to Beers", beers_path %>
+<!-- List other beers from the same brewery -->
+<% if @beer.brewery.beers.where.not(id: @beer.id).any? %>
+  <h2>Other Beers from <%= @beer.brewery.name %></h2>
+  <ul>
+    <% @beer.brewery.beers.where.not(id: @beer.id).each do |other_beer| %>
+      <li><%= link_to other_beer.name, beer_path(other_beer) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><em>Enjoy responsibly, don't do anything I wouldn't do.</em></p>
+
+<%= link_to "Back to Beers", beers_path, class: "btn btn-primary" %>
