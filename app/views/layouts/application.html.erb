@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
   <title>Brewery Explorer</title>
@@ -16,6 +16,7 @@
       padding: 15px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
 
     /* "Die Kneipe" Title */
@@ -27,6 +28,11 @@
     }
 
     /* Navigation links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
     .nav-links a {
       font-size: 18px;
       color: white;
@@ -44,17 +50,70 @@
     .nav-links a:active {
       color: #FF4500; /* Orange click effect */
     }
+
+    /* Search form styles */
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-form input[type="text"] {
+      padding: 6px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .search-form select {
+      padding: 6px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .search-form button {
+      padding: 6px 12px;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .search-form button:hover {
+      background-color: #FF4500;
+      color: white;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <span class="brand-title">Die Kneipe</span>
+    <p>------  Liam Friesen 2025  ------</p>
     <div class="nav-links">
       <a href="<%= root_path %>">Home</a>
+    
       <a href="<%= beers_path %>">Beers</a>
+     
       <a href="<%= pubs_path %>">Breweries</a>
+      
       <a href="<%= about_path %>">About</a>
+
     </div>
+
+    <br>
+    <br>
+    <br>
+    
+    <!-- Search Form -->
+    <form action="<%= search_path %>" method="get" class="search-form">
+      <input type="text" name="query" placeholder="Search Beers or Breweries..." required>
+      <select name="category">
+        <option value="beers">Beers</option>
+        <option value="breweries">Breweries</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
   </nav>
 
   <div class="container">
