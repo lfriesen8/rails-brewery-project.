@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get "/about", to: "pages#about"
-  get "/pubs", to: "breweries#pubinfo"  # New route for pubs page
-  root "breweries#index"  # Home page remains the same
-  resources :breweries, only: [:index, :show]  
+
+  root "breweries#index"
+
+  resources :breweries, only: [:index, :show]
   resources :beers, only: [:index, :show]
+
+  # Search routes
+  get "/search", to: "search#index"  
 end
