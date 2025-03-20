@@ -1,22 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Project Rails" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Brewery Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_importmap_tags %> <%# Rails 7 JavaScript setup %>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  </head>
+  <style>
+    /* Navbar styles */
+    .navbar {
+      background: #333;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+    }
 
-  <body>
+    /* "Die Kneipe" Title */
+    .brand-title {
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+      margin-right: 30px;
+    }
+
+    /* Navigation links */
+    .nav-links a {
+      font-size: 18px;
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect */
+    .nav-links a:hover {
+      color: #FFD700; /* Gold hover effect */
+    }
+
+    /* Click effect */
+    .nav-links a:active {
+      color: #FF4500; /* Orange click effect */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="brand-title">Die Kneipe</span>
+    <div class="nav-links">
+      <a href="<%= root_path %>">Home</a>
+      <a href="<%= beers_path %>">Beers</a>
+      <a href="<%= breweries_path %>">Breweries</a>
+      <a href="<%= about_path %>">About</a>
+    </div>
+  </nav>
+
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
